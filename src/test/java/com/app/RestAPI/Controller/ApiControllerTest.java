@@ -39,7 +39,7 @@ class ApiControllerTest {
     }
 
     @Test
-    void testGetAllTasks() throws Exception {
+    void getAllTasks() throws Exception {
         List<Task> tasks = List.of(sampleTask());
 
         Mockito.when(taskService.getAllTasks()).thenReturn(tasks);
@@ -50,7 +50,7 @@ class ApiControllerTest {
     }
 
     @Test
-    void testGetTaskFound() throws Exception {
+    void getTaskFound() throws Exception {
         Mockito.when(taskService.getTask(1L)).thenReturn(sampleTask());
 
         mockMvc.perform(get("/api/tasks/1"))
@@ -59,7 +59,7 @@ class ApiControllerTest {
     }
 
     @Test
-    void testGetTaskNotFound() throws Exception {
+    void getTaskNotFound() throws Exception {
         Mockito.when(taskService.getTask(99L)).thenReturn(null);
 
         mockMvc.perform(get("/api/tasks/99"))
@@ -68,7 +68,7 @@ class ApiControllerTest {
     }
 
     @Test
-    void testSaveTask() throws Exception {
+    void saveTask() throws Exception {
         Task newTask = sampleTask();
 
         mockMvc.perform(post("/api/tasks")
@@ -79,7 +79,7 @@ class ApiControllerTest {
     }
 
     @Test
-    void testEditTaskFound() throws Exception {
+    void editTaskFound() throws Exception {
         Task updated = sampleTask();
         updated.setTitle("Updated Title");
 
@@ -94,7 +94,7 @@ class ApiControllerTest {
     }
 
     @Test
-    void testEditTaskNotFound() throws Exception {
+    void editTaskNotFound() throws Exception {
         Mockito.when(taskService.editTask(Mockito.eq(99L), any(Task.class)))
                 .thenReturn(null);
 
@@ -106,7 +106,7 @@ class ApiControllerTest {
     }
 
     @Test
-    void testDeleteTaskFound() throws Exception {
+    void deleteTaskFound() throws Exception {
         Mockito.when(taskService.deleteTask(1L)).thenReturn("Task deleted");
 
         mockMvc.perform(delete("/api/tasks/1"))
@@ -115,7 +115,7 @@ class ApiControllerTest {
     }
 
     @Test
-    void testDeleteTaskNotFound() throws Exception {
+    void deleteTaskNotFound() throws Exception {
         Mockito.when(taskService.deleteTask(99L)).thenReturn(null);
 
         mockMvc.perform(delete("/api/tasks/99"))
