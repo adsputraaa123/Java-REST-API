@@ -20,11 +20,11 @@ Using Maven: mvn spring-boot:run
 Database and other settings are read from `src/main/resources/application.properties`.
 
 Example (application.properties):
-spring.application.name=RestAPI
-spring.datasource.url=jdbc:postgresql://localhost:5432/tasks
-spring.datasource.username=postgres
-spring.datasource.password=1234
-spring.jpa.hibernate.ddl-auto=update
+- spring.application.name=RestAPI
+- spring.datasource.url=jdbc:postgresql://localhost:5432/tasks
+- spring.datasource.username=postgres
+- spring.datasource.password=1234
+- spring.jpa.hibernate.ddl-auto=update
 
 ## API Endpoints
 The controller uses `/api/tasks` as base path:
